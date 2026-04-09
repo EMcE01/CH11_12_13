@@ -1,39 +1,39 @@
-import taskStorage from 'movie_tracker/modules/movie_storage';
+import movieStorage from 'movie_storage';
 
-let tasks = [];         // private variable
+let movies = [];         // private variable
 
-const taskList = {
+const movieList = {
     load() {
-        tasks = taskStorage.retrieve();
+        movies = movieStorage.retrieve();
         return this;
     },
     save() {
-        taskStorage.store(tasks);
+        movieStorage.store(movies);
         return this;
     },
-    add(task) {
-        tasks.push(task);
+    add(movie) {
+        movies.push(movie);
         return this;
     },
     delete(i) {
         this.sortByDueDate(); // sort so in same order as page
-        tasks.splice(i, 1);
+        movies.splice(i, 1);
         return this;
     },
     clear() {
-        tasks.length = 0;
-        taskStorage.remove();
+        movies.length = 0;
+        movieStorage.remove();
         return this;
     },
     sortByDueDate() {
-        tasks.sort((a, b) => a.dueDate - b.dueDate);
+        movies.sort((a, b) => a.dueDate - b.dueDate);
         return this;
     },
     *[Symbol.iterator]() { 
-        for (let task of tasks) {
-            yield task;
+        for (let movie of movies) {
+            yield movie;
         }
     }
 };
 
-export default taskList;
+export default movieList;

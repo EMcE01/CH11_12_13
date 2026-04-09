@@ -1,68 +1,68 @@
-import taskList from "movie_tracker/movie_tracker";
-import Task from "task";
+import movieList from "movie_list";
+import Movie from "movie";
 import * as dom from "DOM";
 
-const displayTasks = () => {
-    taskList.sortByDueDate();
+const displayMovies = () => {
+    movieList.sortByDueDate();
 
-    const select = dom.get("#tasks");
-    select.textContent = "";  // clear previous tasks
+    const select = dom.get("#movies");
+    select.textContent = "";  // clear previous movies
 
-    for (let task of taskList) {   
+    for (let movie of movieList) {   
         const opt = document.createElement("option");
-        opt.appendChild(document.createTextNode(task));
+        opt.appendChild(document.createTextNode(movie));
         select.appendChild(opt);
     }  
-    dom.focus("#task");
+    dom.focus("#movie");
 }
 
 dom.load(() => {
-    dom.addClick("#add_task", () => {
+    dom.addClick("#add_movie", () => {
         dom.clear("#msg");             // clear any previous message
         
-        const newTask = new Task(
-            dom.getValue("#task"),
+        const newMovie = new Movie(
+            dom.getValue("#movie"),
             dom.getValue("#due_date"));  
         
         let message = "";
-        if (newTask.description === "") {
+        if (newMovie.description === "") {
             message = "Movie is required. ";
         }
-        if (newTask.hasInvalidDueDate || newTask.isPastDue) {
+        if (newMovie.hasInvalidDueDate || newMovie.isPastDue) {
             message += "Due Date must be a valid date in the future."
         } 
 
         if (message === "") {
-            taskList.load().add(newTask).save();
-            dom.clear("#task");
+            movieList.load().add(newMovie).save();
+            dom.clear("#movie");
             dom.clear("#due_date");
-            displayTasks();
+            displayMovies();
         } else {
             dom.setText("#msg", message);
-            dom.select("#task");
+            dom.select("#movie");
         }     
     });
     
-    dom.addClick("#clear_tasks", () => {
-        taskList.clear();
-        dom.clear("#tasks");
-        dom.clear("#task");
+    dom.addClick("#clear_movies", () => {
+        movieList.clear();
+        dom.clear("#movies");
+        dom.clear("#movie");
         dom.clear("#due_date");
         dom.clear("#msg");
-        dom.focus("#task");
+        dom.focus("#movie");
     });  
 
-    dom.addClick("#delete_task", () => {
+    dom.addClick("#delete_movie", () => {
         dom.clear("#msg");             // clear any previous message
         
-        const index = dom.get("#tasks").selectedIndex;
+        const index = dom.get("#movies").selectedIndex;
         if (index === -1) {
-            dom.setText("#msg", "Please select a task to delete.");
+            dom.setText("#msg", "Please select a movie to delete.");
         } else {
-            taskList.load().delete(index).save();
-            displayTasks();
+            movieList.load().delete(index).save();
+            displayMovies();
         }
     });
-    taskList.load()
-    displayTasks();
+    movieList.load()
+    displayMovies();
 });

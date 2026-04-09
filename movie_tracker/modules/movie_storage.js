@@ -1,23 +1,23 @@
 import * as storage from 'storage';
-import Movie from 'movie_tracker/modules/movie';
+import Movie from 'movie';
 
-const taskStorage = {
+const movieStorage = {
     retrieve() { 
-        const tasks = [];
-        const taskArray = storage.retrieve("tasks");
-        if(taskArray) {
-            for(let obj of taskArray) {
-                tasks.push(new Movie(obj.description, obj.dueDate));
+        const movies = [];
+        const movieArray = storage.retrieve("movies");
+        if(movieArray) {
+            for(let obj of movieArray) {
+                movies.push(new Movie(obj.description, obj.dueDate));
             }
         }
-        return tasks;
+        return movies;
     },
-    store(tasks) { 
-        storage.store("tasks", tasks); 
+    store(movies) { 
+        storage.store("movies", movies); 
     },
     remove() { 
-        storage.remove("tasks"); 
+        storage.remove("movies"); 
     }
 };
 
-export default taskStorage;
+export default movieStorage;

@@ -10,20 +10,20 @@
     <div id="form">
         <h1>Movie List</h1>
         <div>
-            <label for="task">Movie:</label>
-            <input type="text" name="task" id="task">
+            <label for="movie">Movie:</label>
+            <input type="text" name="movie" id="movie">
         </div>
         <div>
             <label for="due_date">Due Date:</label>
             <input type="text" name="due_date" id="due_date">
         </div>
-            <button id="add_task">Add Movie</button>
-            <button id="clear_tasks">Clear Tasks</button>
+            <button id="add_movie">Add Movie</button>
+            <button id="clear_movies">Clear Movies</button>
     </div>
     
     <div id="display">
-        <select name="tasks" id="tasks" multiple></select><br>
-        <button id="delete_task">Delete Movie</button>
+        <select name="movies" id="movies" multiple></select><br>
+        <button id="delete_movie">Delete Movie</button>
     </div>
 
     <div class="clear"></div>
@@ -34,9 +34,9 @@
           "imports": {
             "storage": "../general_modules/storage.js",
             "DOM": "../general_modules/DOM.js",
-            "task":"./modules/movie.js",
-            "task_storage":"./modules/movie_storage.js",
-            "task_list":"./modules/movie_tracker.js"
+            "movie":"./modules/movie.js",
+            "movie_storage":"./modules/movie_storage.js",
+            "movie_list":"./modules/movie_list.js"
           }
         }
     </script>
