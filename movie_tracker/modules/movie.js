@@ -1,20 +1,29 @@
+/**
+ * called from external files
+ */
 class Movie {
-    constructor(description, dueDate) {
-        this.description = description;
-        this.dueDate = new Date(dueDate);
+    /**
+     * transfers data style for use within this file
+     * @param title
+     * @param genre
+     * @param rating
+     */
+    constructor(title, genre, rating) {
+        this.title = title;
+        this.genre = genre;
+        this.rating = rating;
     }
 
-    get hasInvalidDueDate() {
-        return this.dueDate.toString() === "Invalid Date";
-    }
-    get isPastDue() {
-        const today = new Date();
-        return this.dueDate.getTime() < today.getTime();
-    }
-
+    /**
+     * creates a string to be displayed
+     * @returns {string}
+     */
     toString() {
-        return `${this.dueDate.toDateString()} - ${this.description}`;
+        return `title - ${this.title} | genre - ${this.genre} | rating- ${this.rating}`;
     }
 }
 
+/**
+ * exports the string to be displayed
+ */
 export default Movie;

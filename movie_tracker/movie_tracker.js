@@ -1,9 +1,15 @@
+/**
+ * imported from other files
+ */
 import movieList from "movie_list";
 import Movie from "movie";
 import * as dom from "DOM";
 
+/**
+ * shows the movies on the screen
+ */
 const displayMovies = () => {
-    movieList.sortByDueDate();
+    movieList.sort();
 
     const select = dom.get("#movies");
     select.textContent = "";  // clear previous movies
@@ -13,29 +19,30 @@ const displayMovies = () => {
         opt.appendChild(document.createTextNode(movie));
         select.appendChild(opt);
     }  
-    dom.focus("#movie");
+    dom.focus("#title");
 }
 
+/**
+ * loads the movies in the array from the previous use
+ */
 dom.load(() => {
     dom.addClick("#add_movie", () => {
         dom.clear("#msg");             // clear any previous message
         
         const newMovie = new Movie(
-            dom.getValue("#movie"),
-            dom.getValue("#due_date"));  
+            dom.getValue("#title"),
+            dom.getValue("#genre"),
+            dom.getValue("#rating")
+        );
         
         let message = "";
-        if (newMovie.description === "") {
-            message = "Movie is required. ";
+        if (newMovie.title === "") {
+            message = "Movie title is required. ";
         }
-        if (newMovie.hasInvalidDueDate || newMovie.isPastDue) {
-            message += "Due Date must be a valid date in the future."
-        } 
 
         if (message === "") {
             movieList.load().add(newMovie).save();
-            dom.clear("#movie");
-            dom.clear("#due_date");
+            dom.clear("#title");
             displayMovies();
         } else {
             dom.setText("#msg", message);
@@ -46,8 +53,7 @@ dom.load(() => {
     dom.addClick("#clear_movies", () => {
         movieList.clear();
         dom.clear("#movies");
-        dom.clear("#movie");
-        dom.clear("#due_date");
+        dom.clear("#title");
         dom.clear("#msg");
         dom.focus("#movie");
     });  
