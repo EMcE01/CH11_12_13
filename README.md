@@ -1,5 +1,5 @@
-# 📌 Project Title
-### 👤 Author(s)
+# 📌 Movie Tracker
+### 👤 Author
 - Ethan McEvoy (https://github.com/EMcE01)
 
 ---
