@@ -62,7 +62,7 @@ Highlight key concepts learned or applied:
 > 🔝 [Back to TOC](#-table-of-contents)
 
 - ✅ Data Storage – Stored data in local storage 
-- ✅ Data Retreiving – Retreived data from local storage  
+- ✅ Data Retrieving – Retrieved data from local storage  
 - ✅ Data Sorting – Sorted data by genre and rating  
 
 ---
