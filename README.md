@@ -66,3 +66,22 @@ Highlight key concepts learned or applied:
 - ✅ Data Sorting – Sorted data by genre and rating  
 
 ---
+
+## 🖼 Visual Aids: Screenshots / GIFs / Reports / Data Input & Output
+> 🔝 [Back to TOC](#-table-of-contents)
+
+## Adding A Movie
+![Adding Movies](assets/Add.gif)
+## Deleting and Clearing
+![Deleting and Clearing](assets/delete.gif)
+## How it sorts
+![Showing Sorted](assets/sort.png)
+
+---
+
+## 🧠 Reflection: What I Learned
+> 🔝 [Back to TOC](#-table-of-contents)
+
+This assignment showed me how important documentation is as I struggled 🧩 with refactoring. As I would rename the files, the variables and classes were changed for me. However, some variables were not meant to be changed. Having the documentation to look at helped me substantially. I feel that I impproved 🚀 on many skills such as the documentation as well as this readMe. Overall, this assignment taught me just how easy it can be to take an old project and revamp it to meet my new needs. While also showing me that it may not always be the simplest option if the previous project has a lot to alter. 
+
+---
